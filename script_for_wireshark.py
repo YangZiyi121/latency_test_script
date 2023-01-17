@@ -5,7 +5,7 @@ import os
 
 #Start wireshark and capture the packets
 capture = pyshark.LiveRingCapture(interface='enp34s0f0')
-capture.sniff(timeout = 200)
+capture.sniff(timeout = 1600)
 print (capture)
 send_time = []
 receive_time = []
@@ -24,5 +24,8 @@ dataframe.to_csv("latency.csv", sep=',')
 
 #plot the graph
 plt.hist(latency, bins= 10)
-plt.savefig("latency_100_16_1")
+plt.xlabel('latency(s)')
+plt.ylabel('count')
+plt.title('1000 times latency test for gradient kernel')
+plt.savefig("latency_1000_16_1")
 
